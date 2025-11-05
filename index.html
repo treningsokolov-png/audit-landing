@@ -48,8 +48,12 @@
                 <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
                     Запишіться на <span class="font-semibold text-gray-800">безкоштовну 45-хвилинну стратегічну діагностику</span>. Я розберу вашу систему продажів і покажу 3 «сліпі зони», які заважають вам перейти на новий порядок величин у доході.
                 </p>
-                <!-- Кнопка (CTA) -->
-                <a href="#cta-form" class="bg-indigo-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                <!-- 
+                =============================================================
+                ВИПРАВЛЕНА КНОПКА (АДАПТИВНІ ВІДСТУПИ І ШРИФТ)
+                =============================================================
+                -->
+                <a href="#cta-form" class="bg-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-lg text-base sm:text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 inline-block">
                     [Отримати безкоштовну діагностику]
                 </a>
                 <!-- Соціальний доказ -->
@@ -61,6 +65,9 @@
 
         <!-- [БЛОК 2: ПРОБЛЕМА (БОЛІ ВЛАСНИКА)] -->
         <section id="problems" class="py-24 bg-gray-100">
+            <!-- ... ... -->
+            <!-- ... код блоку проблем без змін ... -->
+            <!-- ... ... -->
             <div class="container mx-auto max-w-6xl px-4">
                 <!-- Заголовок -->
                 <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">
@@ -173,7 +180,7 @@
                 </div>
                 
                 <!-- Кнопка (CTA) -->
-                <a href="#cta-form" class="mt-12 inline-block bg-indigo-600 text-white font-bold py-4 px-10 rounded-lg shadow-lg text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                <a href="#cta-form" class="mt-12 inline-block bg-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-lg text-base sm:text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
                     [Записатися на аудит зараз]
                 </a>
             </div>
@@ -229,6 +236,9 @@
         
         <!-- [БЛОК 5: ДЛЯ КОГО ЦЯ ДІАГНОСТИКА?] -->
         <section id="for-whom" class="py-24 bg-white">
+            <!-- ... ... -->
+            <!-- ... код блоку "для кого" без змін ... -->
+            <!-- ... ... -->
             <div class="container mx-auto max-w-6xl px-4">
                 <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">
                     Кому це допоможе?
@@ -289,8 +299,12 @@
                 <p class="text-xl text-indigo-100 mb-10">
                     Я особисто проводжу лише <span class="font-bold text-white">5 безкоштовних діагностик на тиждень</span>. Це необхідно, щоб я міг глибоко зануритися в кожен бізнес.
                 </p>
-                <!-- Кнопка (CTA) -->
-                <a href="#form-popup" onclick="document.getElementById('form-popup').style.display='block'" class="bg-white text-indigo-600 font-bold py-4 px-10 rounded-lg shadow-2xl text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105">
+                <!-- 
+                =============================================================
+                ВИПРАВЛЕНА КНОПКА (АДАПТИВНІ ВІДСТУПИ І ШРИФТ)
+                =============================================================
+                -->
+                <a href="#form-popup" onclick="document.getElementById('form-popup').style.display='block'" class="bg-white text-indigo-600 font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-2xl text-base sm:text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105 inline-block">
                     [Зайняти місце на безкоштовну діагностику]
                 </a>
                 <!-- Під кнопкою (важливий крок!) -->
@@ -303,6 +317,9 @@
 
     <!-- [ФОРМА (Модальне вікно)] -->
     <div id="form-popup" style="display: none;" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
+        <!-- ... ... -->
+        <!-- ... код форми без змін ... -->
+        <!-- ... ... -->
         <div class="bg-white rounded-lg shadow-2xl p-8 md:p-10 w-full max-w-2xl relative max-h-[90vh] overflow-y-auto">
             <!-- Кнопка закриття -->
             <button onclick="document.getElementById('form-popup').style.display='none'" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
@@ -374,3 +391,4 @@
 
 </body>
 </html>
+

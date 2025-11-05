@@ -183,9 +183,14 @@
         <section id="about" class="py-24 bg-gray-900 text-white">
             <div class="container mx-auto max-w-6xl px-4">
                 <div class="flex flex-col md:flex-row items-center gap-12">
-                    <!-- Фото -->
+                    <!-- 
+                    =============================================================
+                    ВАЖЛИВА ЗМІНА!
+                    src="" тепер вказує на ваш файл Sokolov1.jpg
+                    =============================================================
+                    -->
                     <div class="flex-shrink-0 w-full md:w-1/3">
-                        <img src="https://placehold.co/400x400/374151/FFFFFF?text=Фото+Олександра" alt="Олександр Соколов" class="rounded-lg shadow-2xl mx-auto object-cover">
+                        <img src="/Sokolov1.jpg" alt="Олександр Соколов" class="rounded-lg shadow-2xl mx-auto object-cover w-full h-auto aspect-square">
                     </div>
                     <!-- Текст -->
                     <div class="md:w-2/3">
@@ -311,8 +316,7 @@
             
             <!-- 
             =============================================================
-            ВАЖЛИВА ЗМІНА!
-            action="" тепер вказує на ваш Webhook з Make.com.
+            Форма підключена до вашого Webhook з Make.com
             =============================================================
             -->
             <form action="https://hook.eu2.make.com/ahv94pcczw7nqugismg5kntk6mr21bg4" method="POST">

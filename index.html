@@ -1,196 +1,549 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Діагностична сесія для власників бізнесу — Олександр Соколов</title>
-
-    <!-- Tailwind CSS -->
+    <title>Аудит відділу продажів — Олександр Соколов</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth;
+        body { font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; }
+        .quiz-option { border: 2px solid #e5e7eb; transition: all 0.3s ease; }
+        .quiz-option:hover { border-color: #4f46e5; }
+        .quiz-option input:checked + label {
+            border-color: #4f46e5;
+            background-color: #eef2ff;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
         }
     </style>
 </head>
-
 <body class="bg-gray-50 text-gray-800">
 
+<!-- ХЕДЕР -->
+<header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="container mx-auto max-w-6xl px-4 py-4 flex justify-between items-center">
+        <a href="#hero" class="text-xl font-bold text-gray-900">
+            Олександр Соколов <span class="text-indigo-600">Архітектор систем продажів</span>
+        </a>
+        <a href="#cta-form-anchor"
+           onclick="openQuiz(event)"
+           class="hidden sm:inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-lg shadow-md hover:bg-indigo-700 transition">
+            Отримати аудит
+        </a>
+    </div>
+</header>
+
+<main>
     <!-- HERO -->
-    <section class="bg-white border-b">
-        <div class="container mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-12 items-center">
-            
+    <section id="hero" class="bg-white pt-16 pb-24">
+        <div class="container mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
             <div>
-                <h1 class="text-4xl font-bold leading-tight mb-6">
-                    Діагностична сесія для збільшення продажів у вашому бізнесі
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                    Ваш відділ продажів <span class="text-indigo-600">втрачає гроші</span>. Я покажу, де саме.
                 </h1>
-
                 <p class="text-lg text-gray-600 mb-6">
-                    Отримайте персональний аудит вашого відділу продажів, діагностику вузьких місць
-                    та покрокові рекомендації для росту від експерта з 18-річним досвідом.
+                    45-хвилинна стратегічна діагностика для власників бізнесу, які хочуть перейти
+                    на новий порядок величин у доході за рахунок системи продажів, а не «героїзму» менеджерів.
                 </p>
+                <ul class="space-y-2 text-gray-700 mb-8">
+                    <li>• 16+ років в побудові відділів продажів</li>
+                    <li>• 800+ компаній, 12 000+ продавців</li>
+                    <li>• Клієнти: ПриватБанк, Укрсиббанк, Rozetka, Нафтогаз та ін.</li>
+                </ul>
+                <a href="#cta-form-anchor"
+                   onclick="openQuiz(event)"
+                   class="inline-block bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition transform hover:scale-105">
+                    Записатися на безкоштовну діагностику
+                </a>
+            </div>
+            <div class="flex justify-center">
+                <img src="Sokolov1.jpg" alt="Олександр Соколов" class="rounded-2xl shadow-2xl w-full max-w-md object-cover">
+            </div>
+        </div>
+    </section>
 
-                <ul class="text-gray-700 space-y-2">
-                    <li>• 800+ компаній пройшли навчання</li>
-                    <li>• 12 000+ продавців натреновано</li>
-                    <li>• 16 років проведення тренінгів</li>
+    <!-- БЛОК ПРОБЛЕМ -->
+    <section id="problems" class="py-20 bg-gray-100">
+        <div class="container mx-auto max-w-6xl px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Впізнаєте себе?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                    <h3 class="text-xl font-semibold mb-3">«Скляна стеля»</h3>
+                    <p class="text-gray-600">
+                        Дохід тримається на одному рівні. План виконується через раз, команда працює реактивно.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                    <h3 class="text-xl font-semibold mb-3">«Чорна діра маркетингу»</h3>
+                    <p class="text-gray-600">
+                        Ліди є, а продажів немає. Дзвінки та переписка не перетворюються в гроші.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                    <h3 class="text-xl font-semibold mb-3">Ручне управління</h3>
+                    <p class="text-gray-600">
+                        Усе зав’язано на вас. Без особистого контролю — хаос та «гасіння пожеж».
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500">
+                    <h3 class="text-xl font-semibold mb-3">Тренінги не дають системи</h3>
+                    <p class="text-gray-600">
+                        Ви вже проводили навчання, але ефект був короткочасним. Система не з’явилась.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- РІШЕННЯ -->
+    <section id="solution" class="py-20 bg-white">
+        <div class="container mx-auto max-w-4xl px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Давайте знайдемо причину, а не просто «підкрутимо скрипти»
+            </h2>
+            <p class="text-lg text-gray-600 mb-10">
+                На діагностиці ми подивимось на вашу воронку в цілому: від маркетингу до оплати.
+                Ви отримаєте чіткий список вузьких місць та дорожню карту змін.
+            </p>
+
+            <div class="bg-gray-50 rounded-2xl shadow-xl p-8 md:p-10 text-left border border-gray-200">
+                <h3 class="text-2xl font-bold mb-6 text-center">
+                    Що ви отримаєте за 45 хвилин:
+                </h3>
+                <ul class="space-y-5 text-gray-700">
+                    <li>1. Діагностику 1–2 ключових розривів, де ви втрачаєте до 80% потенційного прибутку.</li>
+                    <li>2. Оцінку роботи менеджерів (за бажанням — з розбором ваших дзвінків/листів).</li>
+                    <li>3. 3–5 конкретних кроків, які можна впровадити протягом найближчих 30 днів.</li>
                 </ul>
             </div>
+        </div>
+    </section>
 
+    <!-- ПРО АВТОРА -->
+    <section id="about" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
             <div>
-                <img src="Sokolov1.jpg" alt="Олександр Соколов" class="rounded-xl shadow-lg w-full">
+                <img src="Sokolov1.jpg" alt="Олександр Соколов" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto object-cover">
             </div>
-
-        </div>
-    </section>
-
-    <!-- FORM -->
-    <section class="py-16">
-        <div class="container mx-auto max-w-3xl px-4">
-            <h2 class="text-3xl font-bold mb-6 text-center">
-                Заповніть короткий квіз
-            </h2>
-
-            <form id="quizForm" class="bg-white shadow-lg rounded-xl p-8 space-y-6 border">
-
-                <!-- NAME -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Ваше ім’я</label>
-                    <input name="name" required class="w-full border rounded-lg px-4 py-3" placeholder="Введіть ім’я">
-                </div>
-
-                <!-- PHONE -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Номер телефону</label>
-                    <input name="phone" type="tel" required class="w-full border rounded-lg px-4 py-3" placeholder="+380…">
-                </div>
-
-                <!-- EMAIL -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Email</label>
-                    <input name="email" type="email" required class="w-full border rounded-lg px-4 py-3" placeholder="mail@gmail.com">
-                </div>
-
-                <!-- NICHE -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Ніша / сфера бізнесу</label>
-                    <input name="quiz_nisha" required class="w-full border rounded-lg px-4 py-3" placeholder="Наприклад: роздрібна торгівля, послуги, виробництво…">
-                </div>
-
-                <!-- DOHID -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Ваш приблизний місячний оборот</label>
-                    <select name="quiz_dohid" required class="w-full border rounded-lg px-4 py-3">
-                        <option value="">Оберіть відповідь</option>
-                        <option>до 1000</option>
-                        <option>1000-3000</option>
-                        <option>3000-10000</option>
-                        <option>10000-20000</option>
-                        <option>20000+</option>
-                    </select>
-                </div>
-
-                <!-- META -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Ціль по доходу на 3-6 місяців</label>
-                    <select name="quiz_meta" required class="w-full border rounded-lg px-4 py-3">
-                        <option value="">Оберіть відповідь</option>
-                        <option>5000-10000</option>
-                        <option>10000-20000</option>
-                        <option>20000-40000</option>
-                        <option>40000+</option>
-                    </select>
-                </div>
-
-                <!-- INVEST -->
-                <div>
-                    <label class="block text-sm font-medium mb-1">Чи готові ви інвестувати в розвиток відділу продажів?</label>
-                    <select name="quiz_invest" required class="w-full border rounded-lg px-4 py-3">
-                        <option value="">Оберіть відповідь</option>
-                        <option>Так, готовий</option>
-                        <option>Так, але обережно</option>
-                        <option>Ні, не готовий</option>
-                    </select>
-                </div>
-
-                <!-- PRIVACY CHECKBOX -->
-                <label class="flex items-start gap-2 text-xs text-gray-500 mt-4">
-                    <input type="checkbox" required class="mt-1">
-                    <span>
-                        Я погоджуюсь з
-                        <a href="#privacy-policy" class="text-indigo-600 underline">Політикою конфіденційності</a>
-                        та
-                        <a href="#public-offer" class="text-indigo-600 underline">Правилами обробки персональних даних</a>.
-                    </span>
-                </label>
-
-                <!-- SUBMIT -->
-                <button
-                    type="submit"
-                    class="w-full bg-indigo-600 text-white py-4 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition">
-                    Відправити та перейти далі
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- POLICIES -->
-    <section id="privacy-policy" class="py-16 bg-white border-t border-gray-200">
-        <div class="container mx-auto max-w-4xl px-4">
-            <h2 class="text-2xl font-bold mb-4">Політика конфіденційності</h2>
-            <p class="text-gray-700 leading-relaxed">
-                (Тут текст політики, який я вже підготував вище. Можеш залишити як є — він повністю підходить.)
-            </p>
-        </div>
-    </section>
-
-    <section id="public-offer" class="py-16 bg-gray-50 border-t border-gray-200">
-        <div class="container mx-auto max-w-4xl px-4">
-            <h2 class="text-2xl font-bold mb-4">Правила обробки персональних даних</h2>
-            <p class="text-gray-700 leading-relaxed">
-                (Тут текст правил — він теж уже готовий вище. Можеш підставити повністю.)
-            </p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="container mx-auto max-w-6xl px-4 text-sm space-y-3">
-            <p class="text-white font-semibold">ФОП Соколов Олександр Павлович</p>
-            <p>ІПН / код за ЄДРПОУ: 2987620111</p>
-            <p>Місце реєстрації: Україна, 04070, м. Київ, вул. Борисоглібська, буд. 16-В, кв. 6-А</p>
-            <p>IBAN: UA913052990000026006045044095 (АТ КБ «ПриватБанк»)</p>
-            <p>Платник єдиного податку, 3 група, 5 %. Не платник ПДВ.</p>
-            <p>Email: trening.sokolov@gmail.com</p>
-
-            <div class="pt-4 border-t border-gray-700 mt-4 flex justify-between text-xs">
-                <p>&copy; 2024 sokolov.training — Усі права захищено.</p>
-                <p class="space-x-4">
-                    <a href="#privacy-policy" class="underline">Політика конфіденційності</a>
-                    <a href="#public-offer" class="underline">Правила обробки даних</a>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Я не просто тренер. Я — архітектор систем продажів.
+                </h2>
+                <p class="text-lg text-gray-200 mb-5">
+                    Я, Олександр Соколов, 16+ років будую відділи продажів, навчаю команди та допомагаю
+                    власникам бізнесу вийти на нові рівні доходу без вигорання.
+                </p>
+                <ul class="space-y-2 text-gray-200 mb-6">
+                    <li>• 18+ років особистих продажів (телефон, онлайн, офлайн, листування)</li>
+                    <li>• Засновник «Міжнародного Університету продажів» та «Лабораторії продажів»</li>
+                    <li>• Автор книг «Активні продажі…», «Сила бачення» та ін.</li>
+                </ul>
+                <p class="text-indigo-200 bg-indigo-800/40 p-4 rounded-xl border border-indigo-500 text-sm">
+                    Я не продаю «тренінг заради тренінгу». Я проектую систему: структуру, скрипти, стандарти,
+                    показники, контроль — під ваш бізнес.
                 </p>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <!-- FORM SCRIPT -->
-    <script>
-        document.getElementById("quizForm").addEventListener("submit", async function(e) {
-            e.preventDefault();
+    <!-- ДЛЯ КОГО -->
+    <section id="for-whom" class="py-20 bg-white">
+        <div class="container mx-auto max-w-6xl px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+                Кому ця діагностика дійсно допоможе?
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-8">
+                    <h3 class="text-2xl font-semibold text-green-800 mb-5 text-center">✅ Ідеально для</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li>• Власників B2B / B2C-бізнесів з командою від 5 до 50 менеджерів.</li>
+                        <li>• Тих, хто хоче передбачувану систему продажів, а не хаотичні «ривки».</li>
+                        <li>• Керівників, які розуміють цінність інвестицій у системність та навчання.</li>
+                    </ul>
+                </div>
+                <div class="bg-red-50 border border-red-200 rounded-2xl p-8">
+                    <h3 class="text-2xl font-semibold text-red-800 mb-5 text-center">❌ Не підійде</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li>• Фрілансерам-одинакам та «стартапам на коліні».</li>
+                        <li>• Тим, хто шукає «чарівну пігулку» без змін у процесах.</li>
+                        <li>• Тим, хто не готовий інвестувати ні час, ні ресурси в розвиток.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            const form = e.target;
-            const data = Object.fromEntries(new FormData(form));
+    <!-- ФІНАЛЬНИЙ CTA -->
+    <section id="cta-form-anchor" class="py-20 bg-indigo-700 text-white text-center">
+        <div class="container mx-auto max-w-3xl px-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+                Готові дізнатися, де ваші недоотримані $?
+            </h2>
+            <p class="text-lg text-indigo-100 mb-8">
+                Я особисто проводжу обмежену кількість діагностик на тиждень, щоб глибоко занурюватися
+                в кожен бізнес. Заповніть короткий квіз — і ми подивимося, чи можемо вам допомогти.
+            </p>
+            <a href="#"
+               onclick="openQuiz(event)"
+               class="bg-white text-indigo-700 font-bold py-3 px-8 rounded-lg shadow-2xl text-lg hover:bg-gray-100 transition transform hover:scale-105">
+                Пройти квіз та записатися
+            </a>
+            <p class="mt-4 text-sm text-indigo-100">
+                Це не продаж. Це діагностика та рекомендації. Далі ви самі вирішуєте, що з ними робити.
+            </p>
+        </div>
+    </section>
 
-            await fetch("https://hook.eu2.make.com/ahv94pcczw7nqugismg5kntk6mr21bg4", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(data)
-            });
+    <!-- ЮРИДИЧНА ІНФОРМАЦІЯ (КОМПАКТНО) -->
+    <section id="legal" class="bg-gray-900 text-gray-100 py-14">
+        <div class="container mx-auto max-w-4xl px-4">
+            <h2 class="text-xl font-semibold mb-4">Юридична інформація</h2>
 
-            alert("Дякую! Дані успішно відправлені.");
+            <details id="privacy-policy" class="bg-gray-800 rounded-lg p-4 mb-3">
+                <summary class="cursor-pointer font-medium">Політика конфіденційності</summary>
+                <div class="mt-3 text-sm space-y-2 text-gray-200">
+                    <p>
+                        1. Власником сайту та обробником персональних даних є ФОП Соколов Олександр Павлович.
+                    </p>
+                    <p>
+                        2. Ми збираємо та обробляємо ваші дані (ім’я, контактний номер, email, інформацію про бізнес)
+                        з метою: а) зв’язатися з вами щодо діагностичної сесії; б) підготовки індивідуальних рекомендацій;
+                        в) надсилання корисних матеріалів та пропозицій, пов’язаних з темою продажів.
+                    </p>
+                    <p>
+                        3. Дані не передаються третім особам, окрім випадків, передбачених законом України,
+                        або коли це необхідно для надання послуги (наприклад, інтеграція CRM/сервісів розсилки).
+                    </p>
+                    <p>
+                        4. Ви маєте право вимагати доступ до своїх даних, їх виправлення чи видалення,
+                        написавши на <a href="mailto:trening.sokolov@gmail.com" class="underline">trening.sokolov@gmail.com</a>.
+                    </p>
+                    <p>
+                        5. Надсилаючи форму на сайті, ви добровільно надаєте свої дані та погоджуєтесь
+                        із цією Політикою конфіденційності.
+                    </p>
+                </div>
+            </details>
+
+            <details id="data-policy" class="bg-gray-800 rounded-lg p-4">
+                <summary class="cursor-pointer font-medium">Правила обробки персональних даних</summary>
+                <div class="mt-3 text-sm space-y-2 text-gray-200">
+                    <p>
+                        1. Обробка персональних даних здійснюється відповідно до Закону України
+                        «Про захист персональних даних».
+                    </p>
+                    <p>
+                        2. Термін зберігання даних — до моменту відкликання згоди або завершення взаємодії,
+                        але не більше строків, визначених чинним законодавством.
+                    </p>
+                    <p>
+                        3. Ви можете відкликати згоду на обробку персональних даних у будь-який час,
+                        звернувшись за електронною адресою, зазначеною нижче у футері сайту.
+                    </p>
+                    <p>
+                        4. Відправка форм на сайті, підписка на розсилку чи взаємодія з ботами вказує на вашу згоду
+                        з цими правилами.
+                    </p>
+                </div>
+            </details>
+        </div>
+    </section>
+</main>
+
+<!-- ФУТЕР З РЕКВІЗИТАМИ ФОП -->
+<footer class="bg-black text-gray-300 py-10">
+    <div class="container mx-auto max-w-6xl px-4 text-sm space-y-2">
+        <p class="text-white font-semibold">ФОП Соколов Олександр Павлович</p>
+        <p>ІПН / код за ЄДРПОУ: 2987620111</p>
+        <p>Місце реєстрації: Україна, 04070, м. Київ, вул. Борисоглібська, буд. 16-В, кв. 6-А</p>
+        <p>IBAN: UA913052990000026006045044095, АТ КБ «ПриватБанк»</p>
+        <p>Платник єдиного податку 3 групи (5%). Не платник ПДВ.</p>
+        <p>Email: <a href="mailto:trening.sokolov@gmail.com" class="underline">trening.sokolov@gmail.com</a></p>
+        <div class="flex flex-wrap justify-between items-center pt-3 border-t border-gray-700 mt-3 text-xs">
+            <p>&copy; 2024 sokolov.training — Усі права захищено.</p>
+            <p class="space-x-3">
+                <a href="#privacy-policy" class="underline">Політика конфіденційності</a>
+                <a href="#data-policy" class="underline">Правила обробки даних</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- МОДАЛЬНЕ ВІКНО З КВІЗОМ -->
+<div id="quiz-popup" style="display:none;" class="fixed inset-0 bg-gray-900/80 flex items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl relative max-h-[95vh] flex flex-col">
+        <!-- Кнопка закриття -->
+        <button onclick="closeQuiz()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Заголовок -->
+        <div class="border-b border-gray-200 px-8 py-5">
+            <h3 class="text-2xl font-bold text-center text-gray-900">Кваліфікація на діагностику</h3>
+            <p class="text-gray-600 text-center">Відповідайте на 4 короткі запитання про ваш бізнес</p>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mt-4">
+                <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width:20%"></div>
+            </div>
+            <p id="progress-text" class="text-center text-xs text-gray-500 mt-1">Крок 1 з 5</p>
+        </div>
+
+        <!-- КРОКИ КВІЗУ -->
+        <div class="p-8 overflow-y-auto" style="max-height:75vh;">
+            <form id="quiz-form" action="https://hook.eu2.make.com/ahv94pcczw7nqugismg5kntk6mr21bg4" method="POST">
+
+                <!-- КРОК 1 -->
+                <div id="step-1" class="quiz-step active">
+                    <h4 class="text-xl font-semibold mb-3">Крок 1: Ніша / сфера вашого бізнесу*</h4>
+                    <p class="text-gray-600 mb-3 text-sm">
+                        Напишіть коротко: наприклад, «онлайн-школа», «логістика», «виробництво меблів» тощо.
+                    </p>
+                    <input type="text" id="quiz_nisha_input"
+                           class="w-full border rounded-lg px-4 py-3"
+                           placeholder="Ваша ніша…" required>
+                    <div class="mt-6 text-right">
+                        <button type="button"
+                                onclick="nextStep(2,'quiz_nisha')"
+                                class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">
+                            Далі →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- КРОК 2 -->
+                <div id="step-2" class="quiz-step">
+                    <h4 class="text-xl font-semibold mb-4">Крок 2: Поточний середньомісячний оборот*</h4>
+                    <div class="space-y-3">
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="dohid" id="d1" value="0-1000" class="hidden">
+                            <label for="d1" class="block cursor-pointer p-3 rounded-lg">До $1 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="dohid" id="d2" value="1000-3000" class="hidden">
+                            <label for="d2" class="block cursor-pointer p-3 rounded-lg">$1 000 – $3 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="dohid" id="d3" value="3000-10000" class="hidden">
+                            <label for="d3" class="block cursor-pointer p-3 rounded-lg">$3 000 – $10 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="dohid" id="d4" value="10000+" class="hidden">
+                            <label for="d4" class="block cursor-pointer p-3 rounded-lg">$10 000+</label>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button type="button" onclick="prevStep(1)" class="text-gray-600">← Назад</button>
+                        <button type="button"
+                                onclick="nextStep(3,'quiz_dohid')"
+                                class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">
+                            Далі →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- КРОК 3 -->
+                <div id="step-3" class="quiz-step">
+                    <h4 class="text-xl font-semibold mb-4">Крок 3: Фінансова ціль на 3–6 місяців*</h4>
+                    <div class="space-y-3">
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="meta" id="m1" value="5000-10000" class="hidden">
+                            <label for="m1" class="block cursor-pointer p-3 rounded-lg">$5 000 – $10 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="meta" id="m2" value="10000-20000" class="hidden">
+                            <label for="m2" class="block cursor-pointer p-3 rounded-lg">$10 000 – $20 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="meta" id="m3" value="20000-40000" class="hidden">
+                            <label for="m3" class="block cursor-pointer p-3 rounded-lg">$20 000 – $40 000</label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="meta" id="m4" value="40000+" class="hidden">
+                            <label for="m4" class="block cursor-pointer p-3 rounded-lg">$40 000+</label>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button type="button" onclick="prevStep(2)" class="text-gray-600">← Назад</button>
+                        <button type="button"
+                                onclick="nextStep(4,'quiz_meta')"
+                                class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">
+                            Далі →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- КРОК 4 -->
+                <div id="step-4" class="quiz-step">
+                    <h4 class="text-xl font-semibold mb-4">Крок 4: Готовність інвестувати в розвиток*</h4>
+                    <p class="text-gray-600 text-sm mb-3">
+                        Це необхідно, щоб чесно зрозуміти, чи є сенс планувати діагностику.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="invest" id="i1" value="Так, готовий" class="hidden">
+                            <label for="i1" class="block cursor-pointer p-3 rounded-lg">
+                                Так, я готовий інвестувати, якщо бачу чіткий результат.
+                            </label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="invest" id="i2" value="Так, але обережно" class="hidden">
+                            <label for="i2" class="block cursor-pointer p-3 rounded-lg">
+                                Так, але хочу розглянути кілька форматів / варіантів.
+                            </label>
+                        </div>
+                        <div class="quiz-option rounded-lg">
+                            <input type="radio" name="invest" id="i3" value="Ні, не готовий" class="hidden">
+                            <label for="i3" class="block cursor-pointer p-3 rounded-lg">
+                                Ні, я наразі не планую інвестувати гроші.
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <button type="button" onclick="prevStep(3)" class="text-gray-600">← Назад</button>
+                        <button type="button"
+                                onclick="nextStep(5,'quiz_invest')"
+                                class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-indigo-700">
+                            Далі →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- КРОК 5: КОНТАКТИ + ЧЕКБОКС -->
+                <div id="step-5" class="quiz-step">
+                    <h4 class="text-xl font-semibold mb-4">Фінальний крок: контактні дані*</h4>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Вкажіть контакти, щоб ми могли надіслати вам результати кваліфікації та варіанти подальших кроків.
+                    </p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Ваше ім’я*</label>
+                            <input type="text" name="name" required
+                                   class="w-full border rounded-lg px-4 py-3" placeholder="Ім’я">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Телефон (Telegram / Viber)*</label>
+                            <input type="tel" name="phone" required
+                                   class="w-full border rounded-lg px-4 py-3" placeholder="+380…">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email*</label>
+                            <input type="email" name="email" required
+                                   class="w-full border rounded-lg px-4 py-3" placeholder="you@mail.com">
+                        </div>
+                    </div>
+
+                    <!-- Приховані поля -->
+                    <input type="hidden" id="quiz_nisha"  name="quiz_nisha">
+                    <input type="hidden" id="quiz_dohid"  name="quiz_dohid">
+                    <input type="hidden" id="quiz_meta"   name="quiz_meta">
+                    <input type="hidden" id="quiz_invest" name="quiz_invest">
+                    <input type="hidden" id="utm_source"  name="utm_source">
+                    <input type="hidden" id="utm_medium"  name="utm_medium">
+                    <input type="hidden" id="utm_campaign" name="utm_campaign">
+                    <input type="hidden" id="utm_content"  name="utm_content">
+                    <input type="hidden" id="utm_term"     name="utm_term">
+
+                    <!-- Чекбокс з політикою -->
+                    <label class="flex items-start gap-2 text-xs text-gray-500 mt-4">
+                        <input type="checkbox" name="consent" required class="mt-1">
+                        <span>
+                            Я погоджуюсь з
+                            <a href="#privacy-policy" class="text-indigo-600 underline">Політикою конфіденційності</a>
+                            та
+                            <a href="#data-policy" class="text-indigo-600 underline">Правилами обробки персональних даних</a>.
+                        </span>
+                    </label>
+
+                    <div class="mt-6 flex justify-between items-center">
+                        <button type="button" onclick="prevStep(4)" class="text-gray-600">← Назад</button>
+                        <button type="submit"
+                                class="w-1/2 bg-green-600 text-white font-semibold py-3 rounded-lg hover:bg-green-700">
+                            Відправити
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- JS ДЛЯ КВІЗУ -->
+<script>
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function openQuiz(e) {
+        if (e) e.preventDefault();
+        document.getElementById('quiz-popup').style.display = 'flex';
+        showStep(1);
+    }
+
+    function closeQuiz() {
+        document.getElementById('quiz-popup').style.display = 'none';
+    }
+
+    function showStep(step) {
+        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+        document.getElementById(`step-${step}`).classList.add('active');
+        currentStep = step;
+        const progress = (currentStep / totalSteps) * 100;
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        document.getElementById('progress-text').innerText = `Крок ${currentStep} з ${totalSteps}`;
+    }
+
+    function nextStep(next, fieldKey) {
+        if (!saveStepData(fieldKey)) {
+            alert('Будь ласка, заповніть поле або оберіть варіант, щоб продовжити.');
+            return;
+        }
+        showStep(next);
+    }
+
+    function prevStep(prev) {
+        showStep(prev);
+    }
+
+    function saveStepData(fieldKey) {
+        let value = '';
+
+        if (fieldKey === 'quiz_nisha') {
+            value = document.getElementById('quiz_nisha_input').value.trim();
+            if (!value) return false;
+        } else {
+            const map = {
+                quiz_dohid: 'dohid',
+                quiz_meta: 'meta',
+                quiz_invest: 'invest'
+            };
+            const name = map[fieldKey];
+            const checked = document.querySelector(`input[name="${name}"]:checked`);
+            if (!checked) return false;
+            value = checked.value;
+        }
+
+        document.getElementById(fieldKey).value = value;
+        return true;
+    }
+
+    function captureUTMs() {
+        const params = new URLSearchParams(window.location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(f => {
+            const v = params.get(f);
+            if (v) {
+                const el = document.getElementById(f);
+                if (el) el.value = v;
+            }
         });
-    </script>
+    }
+    window.onload = captureUTMs;
+</script>
 
 </body>
 </html>

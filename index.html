@@ -1,425 +1,525 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аудит Відділу Продажів - Олександр Соколов</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Стилі для квізу */
-        .quiz-step {
-            display: none; /* Всі кроки сховані */
-        }
-        .quiz-step.active {
-            display: block; /* Активний крок видимий */
-        }
-        /* Стилізація радіо-кнопок */
-        .quiz-option {
-            border: 2px solid #e5e7eb; /* border-gray-200 */
-            transition: all 0.3s ease;
-        }
-        .quiz-option:hover {
-            border-color: #4f46e5; /* border-indigo-600 */
-        }
-        .quiz-option input:checked + label {
-            border-color: #4f46e5; /* border-indigo-600 */
-            background-color: #eef2ff; /* bg-indigo-50 */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стратегічна діагностика відділу продажів — Олександр Соколов</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+
+    .quiz-option {
+      border: 2px solid #e5e7eb;
+      transition: all 0.25s ease;
+    }
+    .quiz-option:hover {
+      border-color: #4f46e5;
+    }
+    .quiz-option input:checked + label {
+      border-color: #4f46e5;
+      background-color: #eef2ff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- [НАВІГАЦІЯ/ХЕДЕР] -->
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="container mx-auto max-w-6xl px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold text-gray-900">
-                Олександр Соколов. <span class="text-indigo-600">Архітектор Систем Продажів</span>
-            </a>
-            <a href="#" onclick="openQuiz(event)" class="hidden sm:inline-block bg-indigo-600 text-white font-medium py-2 px-5 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
-                Отримати аудит
-            </a>
-        </div>
-    </header>
-
-    <!-- [ОСНОВНИЙ ЛЕНДІНГ] -->
-    <main>
-        <!-- [ПЕРШИЙ ЕКРАН] -->
-        <section id="hero" class="bg-white pt-20 pb-24 text-center">
-            <div class="container mx-auto max-w-4xl px-4">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">
-                    Ваш відділ продажів <span class="text-indigo-600">втрачає гроші</span>. Я покажу, де саме.
-                </h1>
-                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-                    Запишіться на <span class="font-semibold text-gray-800">безкоштовну 45-хвилинну стратегічну діагностику</span>. Я розберу вашу систему продажів і покажу 3 «сліпі зони», які заважають вам перейти на новий порядок величин у доході.
-                </p>
-                <a href="#" onclick="openQuiz(event)" class="bg-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-lg text-base sm:text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 inline-block">
-                    [Отримати безкоштовну діагностику]
-                </a>
-                <p class="mt-8 text-gray-500 font-medium">
-                    Олександр Соколов, 16 років досвіду у побудові відділів продажів.
-                </p>
-            </div>
-        </section>
-
-        <!-- [БЛОК ПРОБЛЕМ] -->
-        <section id="problems" class="py-24 bg-gray-100">
-            <!-- ... (Код блоку проблем без змін) ... -->
-             <div class="container mx-auto max-w-6xl px-4">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Впізнаєте себе?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Біль 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-indigo-500"><div class="mb-4"><svg class="h-12 w-12 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9L3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l5.25 5.25" /></svg></div><h3 class="text-xl font-semibold text-gray-900 mb-3">«Скляна стеля»</h3><p class="text-gray-600">Ви «вперлися» у стелю доходу. Старі методи більше не працюють, а команда не виконує план.</p></div>
-                    <!-- Біль 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-indigo-500"><div class="mb-4"><svg class="h-12 w-12 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg></div><h3 class="text-xl font-semibold text-gray-900 mb-3">«Чорна діра маркетингу»</h3><p class="text-gray-600">Ви вливаєте гроші в рекламу, отримуєте ліди, але конверсія в продаж пригнічує. Менеджери «зливають» клієнтів.</p></div>
-                    <!-- Біль 3 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-indigo-500"><div class="mb-4"><svg class="h-12 w-12 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM18 13.5l.375 1.5L18 16.5l-.375-1.5L16.5 15l1.125-.375L18 13.5z" /></svg></div><h3 class="text-xl font-semibold text-gray-900 mb-3">«Ручне управління»</h3><p class="text-gray-600">Система тримається на вас особисто. У вас немає передбачуваного потоку прибутку, є лише хаос і «гасіння пожеж».</p></div>
-                    <!-- Біль 4 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-indigo-500"><div class="mb-4"><svg class="h-12 w-12 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.5 4.5 0 0018 15.75a4.5 4.5 0 00-3.818-1.025A4.5 4.5 0 0013.5 12a4.5 4.5 0 00-1.025 3.818m-4.04 1.606A4.5 4.5 0 009 15.75a4.5 4.5 0 00-3.818 1.025A4.5 4.5 0 003.45 12a4.5 4.5 0 001.025-3.818m10.7 7.636A4.5 4.5 0 0013.5 12a4.5 4.5 0 00-1.025-3.818m-4.04-1.606A4.5 4.5 0 009 6.25a4.5 4.5 0 00-3.818-1.025A4.5 4.5 0 003.45 9a4.5 4.5 0 001.025 3.818m10.7-7.636A4.5 4.5 0 0013.5 9a4.5 4.5 0 00-1.025 3.818m0 0A4.5 4.5 0 0013.5 12a4.5 4.5 0 00-1.025 3.818" /></svg></div><h3 class="text-xl font-semibold text-gray-900 mb-3">«Тренінги не працюють»</h3><p class="text-gray-600">Ви вже наймали тренерів, але це давало лише короткочасний сплеск мотивації. Навички зникають, а система не з'являється.</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- [БЛОК РІШЕННЯ] -->
-        <section id="solution" class="py-24 bg-white">
-            <!-- ... (Код блоку рішення без змін) ... -->
-            <div class="container mx-auto max-w-4xl px-4 text-center">
-                <h2 class="text-4xl font-bold text-gray-900 mb-6">Досить лікувати симптоми. <span class="text-indigo-600">Давайте знайдемо причину.</span></h2>
-                <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">Щоб заробляти $5 000 на тиждень замість $500, вам потрібно не «краще навчати» менеджерів, а <span class="font-semibold text-gray-800">повністю змінити систему</span>. Ваш поточний дохід — це межа вашої поточної системи.</p>
-                <div class="bg-gray-50 rounded-lg shadow-xl p-8 md:p-12 text-left border border-gray-200">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Що ви отримаєте на безкоштовній діагностиці (45 хвилин):</h3>
-                    <ul class="space-y-6">
-                        <li class="flex items-start"><span class="flex-shrink-0 h-7 w-7 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1"><svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span><div><h4 class="text-lg font-semibold text-gray-900">Точний діагноз:</h4><p class="text-gray-600">Ми виявимо 1-2 ключові «розриви» у вашій воронці продажів, де ви втрачаєте 80% прибутку.</p></div></li>
-                        <li class="flex items-start"><span class="flex-shrink-0 h-7 w-7 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1"><svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span><div><h4 class="text-lg font-semibold text-gray-900">Аналіз дзвінків (за бажанням):</h4><p class="text-gray-600">Ви можете надіслати 2-3 записи дзвінків, і я покажу, як одна змінена фраза у скрипті може підняти конверсію.</p></div></li>
-                         <li class="flex items-start"><span class="flex-shrink-0 h-7 w-7 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1"><svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg></span><div><h4 class="text-lg font-semibold text-gray-900">Персональний План Зростання:</h4><p class="text-gray-600">Ви підете з 3-5 конкретними, пріоритетними кроками, які потрібно впровадити негайно для зростання продажів.</p></div></li>
-                    </ul>
-                </div>
-                <a href="#" onclick="openQuiz(event)" class="mt-12 inline-block bg-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-lg text-base sm:text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                    [Записатися на аудит зараз]
-                </a>
-            </div>
-        </section>
-
-        <!-- [БЛОК АВТОРА] -->
-        <section id="about" class="py-24 bg-gray-900 text-white">
-            <!-- ... (Код блоку автора з вашим фото Sokolov1.jpg) ... -->
-            <div class="container mx-auto max-w-6xl px-4">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="flex-shrink-0 w-full md:w-1/3">
-                        <img src="/Sokolov1.jpg" alt="Олександр Соколов" class="rounded-lg shadow-2xl mx-auto object-cover w-full h-auto aspect-square">
-                    </div>
-                    <div class="md:w-2/3">
-                        <h2 class="text-4xl font-bold mb-6">Я не тренер. <span class="text-indigo-400">Я — архітектор.</span></h2>
-                        <p class="text-lg text-gray-300 mb-6">Мене звати Олександр Соколов.</p>
-                        <p class="text-lg text-gray-300 mb-8">Вже 16 років я не «мотивую» продавців. Я будую системи, які приносять прибуток. Я допомагаю власникам бізнесу перестати бути заручниками свого відділу продажів.</p>
-                        <h3 class="text-2xl font-semibold text-white mb-4">Факти:</h3>
-                        <ul class="space-y-3 mb-8">
-                            <li class="flex items-center"><svg class="h-6 w-6 text-indigo-400 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span class="text-gray-200 text-lg"><b>16+ років</b> в навчанні та побудові відділів продажів.</span></li>
-                            <li class="flex items-center"><svg class="h-6 w-6 text-indigo-400 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span class="text-gray-200 text-lg"><b>>100 компаній</b> (включаючи "Нафтогаз", "ПриватБанк", "Розетка") збільшили свій прибуток.</span></li>
-                        </ul>
-                        <p class="text-lg text-indigo-100 bg-indigo-800 bg-opacity-30 p-4 rounded-lg border border-indigo-700"><b>Мій підхід:</b> Я не продаю «тренінги». Я продаю результат, упакований у 2-3 місячний проект зі створення «Книги Продажів» та системи контролю.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- [БЛОК "ДЛЯ КОГО"] -->
-        <section id="for-whom" class="py-24 bg-white">
-            <!-- ... (Код блоку "для кого" без змін) ... -->
-            <div class="container mx-auto max-w-6xl px-4">
-                <h2 class="text-4xl font-bold text-center text-gray-900 mb-16">Кому це допоможе?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-green-50 border border-green-200 rounded-lg p-8"><h3 class="text-2xl font-semibold text-green-800 mb-6 text-center">✅ Ідеально для...</h3><ul class="space-y-4"><li class="flex items-start"><span class="text-green-600 mr-3 mt-1">✔</span><span class="text-gray-700 text-lg">Власників B2B та B2C-бізнесу з командою від 5 до 50 менеджерів.</span></li><li class="flex items-start"><span class="text-green-600 mr-3 mt-1">✔</span><span class="text-gray-700 text-lg">Тих, хто втомився від «ручного управління» та хоче систему.</span></li><li class="flex items-start"><span class="text-green-600 mr-3 mt-1">✔</span><span class="text-gray-700 text-lg">Тих, хто розуміє, що для нового порядку величин у доході потрібні нові підходи.</span></li></ul></div>
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-8"><h3 class="text-2xl font-semibold text-red-800 mb-6 text-center">❌ Точно НЕ для...</h3><ul class="space-y-4"><li class="flex items-start"><span class="text-red-600 mr-3 mt-1">✖</span><span class="text-gray-700 text-lg">Стартапів «на коліні» та фрілансерів-одинаків.</span></li><li class="flex items-start"><span class="text-red-600 mr-3 mt-1">✖</span><span class="text-gray-700 text-lg">Тих, хто шукає «чарівну пігулку» або мотиваційну накачку.</span></li><li class="flex items-start"><span class="text-red-600 mr-3 mt-1">✖</span><span class="text-gray-700 text-lg">Тих, хто не готовий до чесного аудиту та реальних змін.</span></li></ul></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- [ФІНАЛЬНИЙ ЗАКЛИК] -->
-        <section id="cta-form-anchor" class="py-24 bg-indigo-700 text-white">
-            <!-- ... (Код блоку CTA, кнопка веде на openQuiz()) ... -->
-            <div class="container mx-auto max-w-3xl px-4 text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-6">Готові дізнатися, де ваші $5 000 на тиждень?</h2>
-                <p class="text-xl text-indigo-100 mb-10">Я особисто проводжу лише <span class="font-bold text-white">5 безкоштовних діагностик на тиждень</span>. Це необхідно, щоб я міг глибоко зануритися в кожен бізнес.</p>
-                <a href="#" onclick="openQuiz(event)" class="bg-white text-indigo-600 font-bold py-3 sm:py-4 px-6 sm:px-10 rounded-lg shadow-2xl text-base sm:text-lg hover:bg-gray-100 transition duration-300 transform hover:scale-105 inline-block">
-                    [Зайняти місце на безкоштовну діагностику]
-                </a>
-                <p class="mt-8 text-indigo-200 max-w-xl mx-auto">Після натискання ви пройдете короткий квіз (4 питання) про ваш бізнес. Це допоможе мені підготуватися до сесії.</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- [ФУТЕР] -->
-    <footer class="bg-gray-800 text-gray-400 py-12">
-        <div class="container mx-auto max-w-6xl px-4 text-center">
-            <p>&copy; 2024 Олександр Соколов. Усі права захищені.</p>
-            <p class="mt-2 text-sm">Політика конфіденційності</p>
-        </div>
-    </footer>
-
-    <!-- 
-    =============================================================
-    НОВИЙ БЛОК: МОДАЛЬНЕ ВІКНО З КВІЗОМ
-    =============================================================
-    -->
-    <div id="quiz-popup" style="display: none;" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg shadow-2xl w-full max-w-2xl relative max-h-[95vh]">
-            <!-- Кнопка закриття -->
-            <button onclick="closeQuiz()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
-                <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            
-            <!-- Заголовок Квізу -->
-            <div class="border-b border-gray-200 px-8 py-5">
-                <h3 class="text-2xl font-bold text-gray-900 text-center">Кваліфікація на розбір</h3>
-                <p class="text-gray-600 text-center mb-1">Будь ласка, дайте відповідь на 4 питання</p>
-                <!-- Прогрес-бар -->
-                <div class="w-full bg-gray-200 rounded-full h-2.5 mt-4">
-                    <div id="progress-bar" class="bg-indigo-600 h-2.5 rounded-full" style="width: 20%"></div>
-                </div>
-                <p id="progress-text" class="text-center text-sm text-gray-500 mt-2">Крок 1 з 5</p>
-            </div>
-
-            <!-- Контейнер для кроків квізу -->
-            <div class="p-8 overflow-y-auto" style="max-height: 75vh;">
-                <!-- 
-                =============================================================
-                ФОРМА, ЯКА "ОБГОРТАЄ" ВСІ КРОКИ КВІЗУ
-                Вона відправляє ВСІ ДАНІ в кінці.
-                =============================================================
-                -->
-                <form id="quiz-form" action="https://hook.eu2.make.com/ahv94pcczw7nqugismg5kntk6mr21bg4" method="POST">
-
-                    <!-- КРОК 1: НІША -->
-                    <div id="step-1" class="quiz-step active">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-5">Крок 1: Яка ваша ніша або сфера?*</h4>
-                        <p class="text-gray-600 mb-4">Наприклад: "Онлайн-школа", "IT-аутсорс", "Консалтинг", "Товарний бізнес"</p>
-                        <div>
-                            <input type="text" id="quiz_nisha_input" placeholder="Ваша ніша..." required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                        </div>
-                        <div class="mt-8 text-right">
-                            <button type="button" onclick="nextStep(2, 'quiz_nisha')" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
-                                Далі &rarr;
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- КРОК 2: ПОТОЧНИЙ ДОХІД -->
-                    <div id="step-2" class="quiz-step">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-5">Крок 2: Який ваш поточний середньомісячний дохід?*</h4>
-                        <div class="space-y-3">
-                            <!-- Опція 1 -->
-                            <div class="quiz-option rounded-lg">
-                                <input type="radio" name="dohid" id="dohid-1" value="0-1000" class="hidden">
-                                <label for="dohid-1" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">До $1 000</label>
-                            </div>
-                            <!-- Опція 2 -->
-                            <div class="quiz-option rounded-lg">
-                                <input type="radio" name="dohid" id="dohid-2" value="1000-3000" class="hidden">
-                                <label for="dohid-2" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$1 000 - $3 000</label>
-                            </div>
-                            <!-- Опція 3 -->
-                            <div class="quiz-option rounded-lg">
-                                <input type="radio" name="dohid" id="dohid-3" value="3000-10000" class="hidden">
-                                <label for="dohid-3" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$3 000 - $10 000</label>
-                            </div>
-                            <!-- Опція 4 -->
-                            <div class="quiz-option rounded-lg">
-                                <input type="radio" name="dohid" id="dohid-4" value="10000+" class="hidden">
-                                <label for="dohid-4" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$10 000+</label>
-                            </div>
-                        </div>
-                        <div class="mt-8 flex justify-between">
-                            <button type="button" onclick="prevStep(1)" class="text-gray-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">
-                                &larr; Назад
-                            </button>
-                            <button type="button" onclick="nextStep(3, 'quiz_dohid')" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
-                                Далі &rarr;
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- КРОК 3: ФІНАНСОВА МЕТА -->
-                    <div id="step-3" class="quiz-step">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-5">Крок 3: Яка ваша фінансова мета на найближчі 6 місяців?*</h4>
-                        <div class="space-y-3">
-                            <div class="quiz-option rounded-lg"><input type="radio" name="meta" id="meta-1" value="3000-5000" class="hidden"><label for="meta-1" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$3 000 - $5 000</label></div>
-                            <div class="quiz-option rounded-lg"><input type="radio" name="meta" id="meta-2" value="5000-10000" class="hidden"><label for="meta-2" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$5 000 - $10 000</label></div>
-                            <div class="quiz-option rounded-lg"><input type="radio" name="meta" id="meta-3" value="10000-20000" class="hidden"><label for="meta-3" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$10 000 - $20 000</label></div>
-                            <div class="quiz-option rounded-lg"><input type="radio" name="meta" id="meta-4" value="20000+" class="hidden"><label for="meta-4" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">$20 000+</label></div>
-                        </div>
-                        <div class="mt-8 flex justify-between">
-                            <button type="button" onclick="prevStep(2)" class="text-gray-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">&larr; Назад</button>
-                            <button type="button" onclick="nextStep(4, 'quiz_meta')" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">Далі &rarr;</button>
-                        </div>
-                    </div>
-
-                    <!-- КРОК 4: КВАЛІФІКАЦІЯ -->
-                    <div id="step-4" class="quiz-step">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-5">Крок 4: Чи готові ви інвестувати час та гроші для досягнення цієї мети?*</h4>
-                        <p class="text-gray-600 mb-4">Це потрібно для чесної кваліфікації. Ми шукаємо людей, готових до реальних дій.</p>
-                        <div class="space-y-3">
-                            <div class="quiz-option rounded-lg"><input type="radio" name="invest" id="invest-1" value="Так, готовий" class="hidden"><label for="invest-1" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">Так, я готовий інвестувати, щоб отримати результат.</label></div>
-                            <div class="quiz-option rounded-lg"><input type="radio" name="invest" id="invest-2" value="Так, але..." class="hidden"><label for="invest-2" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">Так, але мені потрібні варіанти (напр. розстрочка).</label></div>
-                            <div class="quiz-option rounded-lg"><input type="radio" name="invest" id="invest-3" value="Ні, не готовий" class="hidden"><label for="invest-3" class="block cursor-pointer p-4 font-medium text-gray-700 rounded-lg">Ні, я поки не готовий інвестувати гроші.</label></div>
-                        </div>
-                        <div class="mt-8 flex justify-between">
-                            <button type="button" onclick="prevStep(3)" class="text-gray-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">&larr; Назад</button>
-                            <button type="button" onclick="nextStep(5, 'quiz_invest')" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">Далі &rarr;</button>
-                        </div>
-                    </div>
-
-                    <!-- КРОК 5: ФОРМА КОНТАКТІВ -->
-                    <div id="step-5" class="quiz-step">
-                        <h4 class="text-xl font-semibold text-gray-900 mb-5">Фінальний крок: Ваші контакти*</h4>
-                        <p class="text-gray-600 mb-4">Заповніть форму, щоб ми могли зв'язатися з вами та перенаправити вас у Telegram-бот.</p>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-gray-700">Ваше ім'я*</label>
-                                <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                            </div>
-                            <div>
-                                <label for="phone" class="block text-sm font-medium text-gray-700">Ваш телефон (Telegram/Viber)*</label>
-                                <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Ваш Email*</label>
-                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                            </div>
-                        </div>
-
-                        <!-- 
-                        =============================================================
-                        ПРИХОВАНІ ПОЛЯ
-                        Сюди JS буде записувати відповіді з квізу та UTM-мітки
-                        =============================================================
-                        -->
-                        <!-- Відповіді на квіз -->
-                        <input type="hidden" id="quiz_nisha" name="quiz_nisha">
-                        <input type="hidden" id="quiz_dohid" name="quiz_dohid">
-                        <input type="hidden" id="quiz_meta" name="quiz_meta">
-                        <input type="hidden" id="quiz_invest" name="quiz_invest">
-                        <!-- UTM-мітки -->
-                        <input type="hidden" id="utm_source" name="utm_source">
-                        <input type="hidden" id="utm_medium" name="utm_medium">
-                        <input type="hidden" id="utm_campaign" name="utm_campaign">
-                        <input type="hidden" id="utm_content" name="utm_content">
-                        <input type="hidden" id="utm_term" name="utm_term">
-
-                        <div class="mt-8 flex justify-between items-center">
-                            <button type="button" onclick="prevStep(4)" class="text-gray-600 font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">&larr; Назад</button>
-                            <button type="submit" class="w-1/2 bg-green-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg text-lg hover:bg-green-700 transition duration-300">
-                                Відправити та перейти в Telegram
-                            </button>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
-        </div>
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#hero" class="text-base sm:text-lg font-semibold text-gray-900">
+        Олександр Соколов <span class="text-indigo-600">— Архітектор систем продажів</span>
+      </a>
+      <button
+        onclick="openQuiz(event)"
+        class="hidden sm:inline-block bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg shadow hover:bg-indigo-700 transition"
+      >
+        Записатися на діагностику
+      </button>
     </div>
-    
-    <!-- 
-    =============================================================
-    JavaScript "МОЗОК" КВІЗУ
-    =============================================================
-    -->
-    <script>
-        let currentStep = 1;
-        const totalSteps = 5;
+  </header>
 
-        // Функція для відкриття/закриття квізу
-        function openQuiz(event) {
-            if (event) event.preventDefault();
-            document.getElementById('quiz-popup').style.display = 'flex';
-            // Скидаємо квіз до першого кроку при кожному відкритті
-            showStep(1);
+  <!-- MAIN -->
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="bg-white pt-16 pb-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+          Ваш відділ продажів може заробляти <span class="text-indigo-600">в рази більше</span>.
+          Давайте знайдемо, що його стримує.
+        </h1>
+        <p class="text-base sm:text-lg text-gray-600 mb-8">
+          Запишіться на <span class="font-semibold text-gray-800">безкоштовну 45-хвилинну стратегічну діагностику</span>.
+          Я покажу 1–3 ключові «дірки» у вашій системі продажів, які забирають до 80% прибутку.
+        </p>
+        <button
+          onclick="openQuiz(event)"
+          class="bg-indigo-600 text-white font-bold py-3 px-6 sm:px-10 rounded-lg shadow-lg hover:bg-indigo-700 transform hover:scale-105 transition"
+        >
+          Отримати безкоштовну діагностику
+        </button>
+        <p class="mt-6 text-gray-500 text-sm sm:text-base">
+          Особисто проводжу обмежену кількість діагностик на тиждень, щоб глибоко зануритися в кожен бізнес.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 bg-gray-900 text-white">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
+        <div class="w-full md:w-1/3">
+          <!-- Заміні на свій GitHub-URL до фото -->
+          <img
+            src="https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO/main/public/Sokolov1.jpg"
+            alt="Олександр Соколов"
+            class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+          />
+        </div>
+        <div class="w-full md:w-2/3">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+            Я не просто тренер. <span class="text-indigo-400">Я — архітектор систем продажів.</span>
+          </h2>
+          <p class="text-gray-300 mb-4">
+            Мене звати Олександр Соколов. Я вже понад 16 років допомагаю власникам бізнесів будувати
+            передбачувані й керовані системи продажів, а не просто «мотивувати менеджерів».
+          </p>
+          <ul class="space-y-2 mb-6 text-gray-200 text-sm sm:text-base">
+            <li>• 16+ років у навчанні та побудові відділів продажів.</li>
+            <li>• 18+ років особистих продажів (телефон, онлайн, офлайн, листування).</li>
+            <li>• 800+ компаній-клієнтів, включаючи ПриватБанк, Укрсиббанк, Rozetka, Нафтогаз.</li>
+            <li>• Автор книг про продажі та системне зростання бізнесу.</li>
+          </ul>
+          <p class="text-indigo-100 bg-indigo-800 bg-opacity-40 border border-indigo-600 rounded-xl p-4 text-sm sm:text-base">
+            На діагностиці ми не будемо «продавати тренінг». Ми чесно подивимося на вашу воронку, виявимо
+            вузькі місця та оцінимо, чи має сенс спільний проєкт зі створення системи продажів під ваш бізнес.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="py-16 bg-indigo-700 text-white text-center">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Готові побачити, де ваші втрачені прибутки?
+        </h2>
+        <p class="text-base sm:text-lg text-indigo-100 mb-8">
+          Заповніть короткий квіз (4 питання). Це допоможе мені підготуватися до розбору і не витрачати
+          ваш час на базові уточнення.
+        </p>
+        <button
+          onclick="openQuiz(event)"
+          class="bg-white text-indigo-700 font-bold py-3 px-6 sm:px-10 rounded-lg shadow-2xl hover:bg-gray-100 transform hover:scale-105 transition"
+        >
+          Пройти квіз та записатися
+        </button>
+        <p class="mt-4 text-xs sm:text-sm text-indigo-100">
+          Заповнюючи форму, ви погоджуєтеся на обробку персональних даних для зв’язку з вами щодо діагностики.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-gray-400 py-8 text-xs sm:text-sm">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between gap-4">
+      <div>
+        <p class="font-semibold text-gray-200">
+          Фізична особа-підприємець Соколов Олександр
+        </p>
+        <p>Місцезнаходження: Україна, м. Київ</p>
+        <p>Електронна пошта для зв’язку: trening.sokolov@gmail.com</p>
+      </div>
+      <div class="text-right space-y-1">
+        <a href="/privacy.html" class="block text-indigo-400 hover:text-indigo-300">
+          Політика конфіденційності
+        </a>
+        <a href="/terms.html" class="block text-indigo-400 hover:text-indigo-300">
+          Умови обробки персональних даних
+        </a>
+        <p class="text-gray-500">
+          © <span id="year"></span> Олександр Соколов. Усі права захищено.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- QUIZ MODAL -->
+  <div
+    id="quiz-popup"
+    class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center z-50 p-4"
+    style="display: none;"
+  >
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[95vh] flex flex-col">
+      <!-- Close button -->
+      <div class="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900">Кваліфікаційний квіз</h3>
+          <p class="text-sm text-gray-500">Відповіді займуть 2–3 хвилини</p>
+        </div>
+        <button onclick="closeQuiz()" class="text-gray-400 hover:text-gray-600">
+          ✕
+        </button>
+      </div>
+
+      <!-- Progress -->
+      <div class="px-6 pt-3">
+        <div class="w-full bg-gray-200 rounded-full h-2">
+          <div id="progress-bar" class="bg-indigo-600 h-2 rounded-full" style="width: 20%;"></div>
+        </div>
+        <p id="progress-text" class="text-xs text-gray-500 mt-1 mb-2 text-right">
+          Крок 1 з 5
+        </p>
+      </div>
+
+      <!-- Form -->
+      <div class="px-6 pb-6 overflow-y-auto" style="max-height: 75vh;">
+        <form
+          id="quiz-form"
+          action="YOUR_WEBHOOK_URL_HERE"
+          method="POST"
+          class="space-y-6"
+        >
+          <!-- STEP 1 -->
+          <div id="step-1" class="quiz-step active">
+            <h4 class="text-lg font-semibold text-gray-900 mb-2">
+              Крок 1: Ваша ніша або сфера діяльності*
+            </h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Наприклад: «онлайн-школа», «IT-аутсорс», «виробництво», «товарний бізнес», «консалтинг» тощо.
+            </p>
+            <input
+              type="text"
+              id="quiz_nisha_input"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+              placeholder="Опишіть коротко вашу нішу"
+              required
+            />
+            <div class="mt-4 flex justify-end">
+              <button
+                type="button"
+                onclick="nextStep(2, 'quiz_nisha')"
+                class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Далі →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div id="step-2" class="quiz-step">
+            <h4 class="text-lg font-semibold text-gray-900 mb-2">
+              Крок 2: Поточний середньомісячний дохід бізнесу (USD)*
+            </h4>
+            <div class="space-y-2">
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="dohid" id="dohid-1" value="0-1000" class="hidden" />
+                <label for="dohid-1" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  До $1 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="dohid" id="dohid-2" value="1000-3000" class="hidden" />
+                <label for="dohid-2" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $1 000 – $3 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="dohid" id="dohid-3" value="3000-10000" class="hidden" />
+                <label for="dohid-3" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $3 000 – $10 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="dohid" id="dohid-4" value="10000+" class="hidden" />
+                <label for="dohid-4" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $10 000+
+                </label>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <button type="button" onclick="prevStep(1)" class="text-sm text-gray-500 hover:text-gray-700">
+                ← Назад
+              </button>
+              <button
+                type="button"
+                onclick="nextStep(3, 'quiz_dohid')"
+                class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Далі →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div id="step-3" class="quiz-step">
+            <h4 class="text-lg font-semibold text-gray-900 mb-2">
+              Крок 3: Фінансова ціль на найближчі 6 місяців (USD)*
+            </h4>
+            <div class="space-y-2">
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="meta" id="meta-1" value="3000-5000" class="hidden" />
+                <label for="meta-1" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $3 000 – $5 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="meta" id="meta-2" value="5000-10000" class="hidden" />
+                <label for="meta-2" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $5 000 – $10 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="meta" id="meta-3" value="10000-20000" class="hidden" />
+                <label for="meta-3" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $10 000 – $20 000
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="meta" id="meta-4" value="20000+" class="hidden" />
+                <label for="meta-4" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  $20 000+
+                </label>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <button type="button" onclick="prevStep(2)" class="text-sm text-gray-500 hover:text-gray-700">
+                ← Назад
+              </button>
+              <button
+                type="button"
+                onclick="nextStep(4, 'quiz_meta')"
+                class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Далі →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div id="step-4" class="quiz-step">
+            <h4 class="text-lg font-semibold text-gray-900 mb-2">
+              Крок 4: Готовність інвестувати в досягнення цієї цілі*
+            </h4>
+            <p class="text-sm text-gray-600 mb-3">
+              Це не зобов’язує вас ні до чого. Потрібно, щоб я розумів рівень вашої готовності до реальних змін.
+            </p>
+            <div class="space-y-2">
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="invest" id="invest-1" value="Так, готовий" class="hidden" />
+                <label for="invest-1" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  Так, я готовий(а) інвестувати, щоб отримати результат.
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="invest" id="invest-2" value="Так, але потрібні варіанти" class="hidden" />
+                <label for="invest-2" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  Так, але хотів(ла) б обговорити формати та варіанти (розстрочка тощо).
+                </label>
+              </div>
+              <div class="quiz-option rounded-lg">
+                <input type="radio" name="invest" id="invest-3" value="Ні, не готовий" class="hidden" />
+                <label for="invest-3" class="block cursor-pointer p-3 text-sm sm:text-base rounded-lg">
+                  Ні, поки не готовий(а) інвестувати гроші.
+                </label>
+              </div>
+            </div>
+            <div class="mt-4 flex justify-between">
+              <button type="button" onclick="prevStep(3)" class="text-sm text-gray-500 hover:text-gray-700">
+                ← Назад
+              </button>
+              <button
+                type="button"
+                onclick="nextStep(5, 'quiz_invest')"
+                class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-indigo-700 transition"
+              >
+                Далі →
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 5: CONTACTS + CONSENT -->
+          <div id="step-5" class="quiz-step">
+            <h4 class="text-lg font-semibold text-gray-900 mb-2">
+              Фінальний крок: контакти та згода*
+            </h4>
+            <p class="text-sm text-gray-600 mb-4">
+              Вкажіть контакти, за якими зручно зв’язатися з вами для узгодження часу діагностики.
+            </p>
+
+            <div class="space-y-3">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Ваше ім’я*</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Телефон / Telegram*</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  class="mt-1 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </div>
+
+              <!-- CONSENT -->
+              <div class="flex items-start gap-2 mt-2">
+                <input
+                  id="consent"
+                  name="consent"
+                  type="checkbox"
+                  required
+                  class="mt-1 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                />
+                <label for="consent" class="text-xs sm:text-sm text-gray-600">
+                  Я підтверджую, що ознайомився(-лася) та погоджуюся з
+                  <a href="/privacy.html" target="_blank" class="text-indigo-600 hover:text-indigo-500 underline">
+                    Політикою конфіденційності
+                  </a>
+                  та
+                  <a href="/terms.html" target="_blank" class="text-indigo-600 hover:text-indigo-500 underline">
+                    Умовами обробки персональних даних
+                  </a>, і надаю згоду на обробку моїх персональних даних з метою зв’язку щодо
+                  стратегічної діагностики відділу продажів.
+                </label>
+              </div>
+            </div>
+
+            <!-- hidden quiz fields -->
+            <input type="hidden" id="quiz_nisha" name="quiz_nisha" />
+            <input type="hidden" id="quiz_dohid" name="quiz_dohid" />
+            <input type="hidden" id="quiz_meta" name="quiz_meta" />
+            <input type="hidden" id="quiz_invest" name="quiz_invest" />
+
+            <!-- UTM -->
+            <input type="hidden" id="utm_source" name="utm_source" />
+            <input type="hidden" id="utm_medium" name="utm_medium" />
+            <input type="hidden" id="utm_campaign" name="utm_campaign" />
+            <input type="hidden" id="utm_content" name="utm_content" />
+            <input type="hidden" id="utm_term" name="utm_term" />
+
+            <!-- extra meta -->
+            <input type="hidden" name="source" value="audit_landing_v2" />
+
+            <div class="mt-5 flex justify-between items-center">
+              <button type="button" onclick="prevStep(4)" class="text-sm text-gray-500 hover:text-gray-700">
+                ← Назад
+              </button>
+              <button
+                type="submit"
+                class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 shadow transition"
+              >
+                Відправити заявку
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    function updateProgress() {
+      const progress = (currentStep / totalSteps) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+      document.getElementById('progress-text').innerText = 'Крок ' + currentStep + ' з ' + totalSteps;
+    }
+
+    function showStep(stepNumber) {
+      document.querySelectorAll('.quiz-step').forEach(step => step.classList.remove('active'));
+      document.getElementById('step-' + stepNumber).classList.add('active');
+      currentStep = stepNumber;
+      updateProgress();
+    }
+
+    function openQuiz(e) {
+      if (e) e.preventDefault();
+      document.getElementById('quiz-popup').style.display = 'flex';
+      showStep(1);
+    }
+
+    function closeQuiz() {
+      document.getElementById('quiz-popup').style.display = 'none';
+    }
+
+    function saveStepData(fieldKey) {
+      let value = '';
+
+      if (fieldKey === 'quiz_nisha') {
+        value = document.getElementById('quiz_nisha_input').value.trim();
+        if (!value) return false;
+      } else {
+        let name;
+        if (fieldKey === 'quiz_dohid') name = 'dohid';
+        else if (fieldKey === 'quiz_meta') name = 'meta';
+        else if (fieldKey === 'quiz_invest') name = 'invest';
+
+        const selected = document.querySelector('input[name="' + name + '"]:checked');
+        if (!selected) return false;
+        value = selected.value;
+      }
+
+      document.getElementById(fieldKey).value = value;
+      return true;
+    }
+
+    function nextStep(nextNumber, fieldKey) {
+      if (fieldKey && !saveStepData(fieldKey)) {
+        alert('Будь ласка, заповніть це поле перед переходом далі.');
+        return;
+      }
+      showStep(nextNumber);
+    }
+
+    function prevStep(prevNumber) {
+      showStep(prevNumber);
+    }
+
+    // UTM capture
+    function captureUTMs() {
+      const params = new URLSearchParams(window.location.search);
+      const fields = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+      fields.forEach(f => {
+        const v = params.get(f);
+        if (v && document.getElementById(f)) {
+          document.getElementById(f).value = v;
         }
+      });
+    }
 
-        function closeQuiz() {
-            document.getElementById('quiz-popup').style.display = 'none';
-        }
-
-        // Функція для показу конкретного кроку
-        function showStep(stepNumber) {
-            // Сховуємо всі кроки
-            document.querySelectorAll('.quiz-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            // Показуємо потрібний крок
-            document.getElementById(`step-${stepNumber}`).classList.add('active');
-            
-            // Оновлюємо прогрес-бар
-            currentStep = stepNumber;
-            const progress = (currentStep / totalSteps) * 100;
-            document.getElementById('progress-bar').style.width = `${progress}%`;
-            document.getElementById('progress-text').innerText = `Крок ${currentStep} з ${totalSteps}`;
-        }
-
-        // Функція для переходу "Вперед"
-        function nextStep(nextStepNumber, currentField) {
-            // 1. Валідація і збереження даних
-            if (!saveStepData(currentField)) {
-                alert('Будь ласка, оберіть варіант або заповніть поле, щоб продовжити.');
-                return;
-            }
-            // 2. Показ наступного кроку
-            showStep(nextStepNumber);
-        }
-
-        // Функція для переходу "Назад"
-        function prevStep(prevStepNumber) {
-            showStep(prevStepNumber);
-        }
-
-        // Функція для збереження даних кроку у приховані поля форми
-        function saveStepData(fieldKey) {
-            let value = '';
-            
-            if (fieldKey === 'quiz_nisha') {
-                // Текстове поле
-                value = document.getElementById('quiz_nisha_input').value;
-                if (value.trim() === '') return false; // Валідація
-            } else {
-                // Радіо-кнопки
-                const radio = document.querySelector(`input[name="${fieldKey === 'quiz_dohid' ? 'dohid' : (fieldKey === 'quiz_meta' ? 'meta' : 'invest')}"]:checked`);
-                if (radio) {
-                    value = radio.value;
-                } else {
-                    return false; // Валідація
-                }
-            }
-            
-            // Зберігаємо значення у приховане поле
-            document.getElementById(fieldKey).value = value;
-            return true;
-        }
-
-        // Функція для збору UTM-міток при завантаженні сторінки
-        function captureUTMs() {
-            const params = new URLSearchParams(window.location.search);
-            const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-            
-            utmFields.forEach(field => {
-                const value = params.get(field);
-                if (value) {
-                    document.getElementById(field).value = value;
-                }
-            });
-        }
-        
-        // Запускаємо збір UTM-міток, коли сторінка завантажилася
-        window.onload = captureUTMs;
-
-    </script>
-
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    window.onload = captureUTMs;
+  </script>
 </body>
 </html>
 
